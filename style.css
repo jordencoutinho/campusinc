@@ -6,13 +6,13 @@
 body {
   margin: 0;
   background: #d9cbb4;
-  color: #2a2118;
+  color: #4B1D5A;
   font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: #241d16;
+    background: #4B1D5A;
   }
 }
 
@@ -38,8 +38,8 @@ body {
 
 .button.primary {
   color: #fff;
-  background: #2f6b3a;
-  border-color: #1f4d29;
+  background: #2fae7b;
+  border-color: #0f4c3a;
   font-weight: 600;
 }
 
