@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CampusSync Noticeboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- Wooden header plaque -->
+    <header class="plaque">
+      <div>
+        <h1>📌 CampusSync Noticeboard</h1>
+        <p>Anyone can pin, edit or take down a notice.</p>
+      </div>
+      <button id="new-button" class="button primary">+ Pin a notice</button>
+    </header>
+
+    <!-- Messages and errors show here -->
+    <div id="banner" class="banner" hidden></div>
+
+    <!-- Search and category filters -->
+    <input id="search" class="search" type="search" placeholder="Search notices…">
+    <div id="chips" class="chips"></div>
+
+    <!-- The board itself -->
+    <div class="frame">
+      <div class="felt">
+        <div id="board" class="board"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Pop-up form for adding or editing a notice -->
+  <dialog id="form-dialog">
+    <h2 id="form-title">Pin a notice</h2>
+
+    <label for="field-title">Title (optional if you add an image)</label>
+    <input id="field-title" maxlength="120">
+
+    <label for="field-body">Details (optional)</label>
+    <textarea id="field-body" rows="4" maxlength="2000"></textarea>
+
+    <label for="field-image">Flyer image (optional)</label>
+    <input id="field-image" type="file" accept="image/*">
+    <img id="image-preview" alt="" hidden>
+    <button id="remove-image" class="button small" hidden>Remove image</button>
+
+    <label for="field-category">Category</label>
+    <select id="field-category"></select>
+
+    <label for="field-date">Event date (optional)</label>
+    <input id="field-date" type="date">
+
+    <label for="field-author">Posted by (optional)</label>
+    <input id="field-author" maxlength="40" placeholder="e.g. Placement Cell">
+
+    <p id="form-error" class="form-error" hidden></p>
+
+    <div class="form-buttons">
+      <button id="cancel-button" class="button">Cancel</button>
+      <button id="save-button" class="button primary">Pin it</button>
+    </div>
+  </dialog>
+
+  <!-- Pop-up for viewing a flyer full size -->
+  <dialog id="zoom-dialog">
+    <img id="zoom-image" alt="Flyer">
+    <div class="zoom-buttons">
+      <button class="button small" data-action="star">Star</button>
+      <button class="button small" data-action="edit">Edit</button>
+      <button class="button small danger" data-action="delete">Remove</button>
+      <button class="button small" data-action="close">Close</button>
+    </div>
+  </dialog>
+
+  <!-- Supabase library (pinned version), then our own files -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
