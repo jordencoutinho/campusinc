@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CampusSync Noticeboard
 
 A shared noticeboard: anyone with the link can pin, edit and remove notices, with optional flyer images.
@@ -44,3 +45,7 @@ Edit the files, then on Netlify open your site > **Deploys** and drag the folder
 - Anyone with the link can add, edit and delete notices. That was the brief, but it means someone could spam or wipe the board. Only share it with people you trust until we add logins and roles.
 - Free plans have limits (storage, bandwidth, and Supabase may pause a project after a period of inactivity). Check each service's current limits. Fine for a class or department pilot.
 - Don't put private student data in it.
+=======
+# Campussync
+BnB '26 lfg
+>>>>>>> a92f1ee4eb4edb7f99cdd7d89ebadbfc3954d685
