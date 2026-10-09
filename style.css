@@ -1,3 +1,53 @@
+/* =====================================================
+   CampusSync Noticeboard: dark theme
+   Edit the colours in the :root block below and the
+   whole app updates.
+   ===================================================== */
+
+:root {
+  color-scheme: dark;   /* dark scrollbars, date pickers and form controls */
+
+  /* Surfaces */
+  --bg: #0f1311;
+  --surface: #1a201d;
+  --surface-raised: #232b27;
+  --border: #323d38;
+
+  /* Text */
+  --text: #e9eee9;
+  --text-muted: #9ba8a0;
+
+  /* Accent (soft sage green) */
+  --accent: #7fcf9c;
+  --accent-strong: #3f9a67;
+  --on-accent: #07140d;
+
+  /* Danger and warning */
+  --danger: #f2948a;
+  --warning-bg: #2d2615;
+  --warning-border: #5c4c1f;
+  --warning-text: #ecd79a;
+
+  /* Wooden frame (dark walnut) */
+  --wood-light: #54402f;
+  --wood-dark: #3a2b20;
+
+  /* Felt board (deep green) */
+  --felt: #1f4a35;
+  --felt-edge: #0f2a1e;
+
+  /* Category colours */
+  --cat-general: #9ba8a0;
+  --cat-exam: #e6b955;
+  --cat-event: #6fb0e6;
+  --cat-placement: #78c993;
+  --cat-club: #b093e6;
+  --cat-holiday: #e68fa6;
+  --cat-urgent: #f0806e;
+
+  --radius: 12px;
+}
+
 /* ---------- Basics ---------- */
 * {
   box-sizing: border-box;
@@ -5,55 +55,49 @@
 
 body {
   margin: 0;
-  background: #d9cbb4;
-  color: #4B1D5A;
-  font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #4B1D5A;
-  }
+  color: var(--text);
+  background: var(--bg);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 .page {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 14px;
+  padding: 16px;
   /* Keep content clear of phone notches and bars */
-  padding-top: calc(14px + env(safe-area-inset-top, 0px));
-  padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  padding-top: calc(16px + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
 }
 
 /* ---------- Buttons and form fields ---------- */
 .button {
+  padding: 8px 14px;
   font: inherit;
-  cursor: pointer;
-  padding: 7px 13px;
-  color: #2a2118;
-  background: #fff;
-  border: 1px solid #d8cdb8;
+  color: var(--text);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
   border-radius: 9px;
+  cursor: pointer;
 }
 
 .button.primary {
-  color: #fff;
-  background: #2fae7b;
-  border-color: #0f4c3a;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-color: var(--accent);
   font-weight: 600;
 }
 
 .button.small {
-  padding: 3px 9px;
+  padding: 3px 10px;
   font-size: 0.78rem;
 }
 
 .button.danger {
-  color: #b42318;
+  color: var(--danger);
 }
 
 .button:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: default;
 }
 
@@ -61,12 +105,26 @@ input,
 select,
 textarea {
   width: 100%;
-  padding: 8px 11px;
+  padding: 9px 12px;
   font: inherit;
-  color: #2a2118;
-  background: #fff;
-  border: 1px solid #d8cdb8;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
   border-radius: 9px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.button:focus-visible,
+.chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* ---------- Header plaque ---------- */
@@ -76,83 +134,86 @@ textarea {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 14px;
-  padding: 12px 18px;
-  color: #fbeed7;
-  background: linear-gradient(180deg, #8a5a33, #6b4226);
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  margin-bottom: 16px;
+  padding: 14px 20px;
+  color: #f2e6d6;
+  background: linear-gradient(180deg, var(--wood-light), var(--wood-dark));
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .plaque h1 {
   margin: 0;
   font: 700 1.35rem Georgia, "Times New Roman", serif;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .plaque p {
-  margin: 0;
+  margin: 2px 0 0;
   font-size: 0.82rem;
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 /* ---------- Banner, search, filter chips ---------- */
 .banner {
-  margin-bottom: 10px;
-  padding: 9px 13px;
+  margin-bottom: 12px;
+  padding: 10px 14px;
   font-size: 0.88rem;
-  background: #fff6dc;
-  border: 1px solid #d9c27a;
+  color: var(--warning-text);
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
   border-radius: 10px;
 }
 
 .search {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  background: var(--surface);
 }
 
 .chips {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .chip {
-  padding: 3px 12px;
+  padding: 4px 13px;
   font: inherit;
   font-size: 0.82rem;
-  color: #2a2118;
-  background: #f3ead8;
-  border: 1px solid #cdbb98;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 999px;
   cursor: pointer;
 }
 
 .chip.active {
-  color: #fff;
-  background: #2f6b3a;
-  border-color: #1f4d29;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
 }
 
-/* ---------- Wooden frame and green felt ---------- */
+/* ---------- Wooden frame and felt ---------- */
 .frame {
   padding: 16px;
-  background: linear-gradient(135deg, #8a5a33, #6b4226 55%, #8a5a33);
+  background: linear-gradient(135deg, var(--wood-light), var(--wood-dark) 55%, var(--wood-light));
   border-radius: 14px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45), inset 0 2px 0 rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6), inset 0 2px 0 rgba(255, 255, 255, 0.08);
 }
 
 .felt {
   min-height: 60vh;
-  padding: 24px 16px 12px;
-  background-color: #2e6b3b;
-  /* Felt grain (SVG noise) on top of a soft light/dark gradient */
+  padding: 28px 18px 12px;
+  background-color: var(--felt);
+  /* Felt grain (SVG noise) on top of a soft vignette */
   background-image:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.55'/></svg>"),
-    radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.28));
-  border: 2px solid #1d4a27;
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.5'/></svg>"),
+    radial-gradient(ellipse at 50% 25%, rgba(255, 255, 255, 0.07), rgba(0, 0, 0, 0.4));
+  border: 2px solid var(--felt-edge);
   border-radius: 6px;
-  box-shadow: inset 0 4px 14px rgba(0, 0, 0, 0.55);
+  box-shadow: inset 0 4px 16px rgba(0, 0, 0, 0.65);
 }
 
 .board {
@@ -162,60 +223,65 @@ textarea {
 
 .empty-message {
   padding: 60px 12px;
-  color: #e8f5e4;
+  color: rgba(233, 238, 233, 0.75);
   text-align: center;
   font: italic 1.1rem Georgia, serif;
 }
 
-/* ---------- Notes (paper notices) ---------- */
+/* ---------- Notes ---------- */
 .note {
+  --cat: var(--cat-general);
+
   position: relative;
   break-inside: avoid;
   margin: 0 0 26px;
   padding: 22px 14px 12px;
-  color: #2a2118;
-  background: #fffdf6;
-  border-radius: 2px;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.4);
+  color: var(--text);
+  background: var(--surface);
+  border-top: 3px solid var(--cat);
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.55);
 }
 
-/* Paper colour by category */
-.note.cat-Exam      { background: #fff3c4; }
-.note.cat-Event     { background: #e3f1ff; }
-.note.cat-Placement { background: #e6f7dd; }
-.note.cat-Club      { background: #f3e5ff; }
-.note.cat-Holiday   { background: #ffe4e6; }
-.note.cat-Urgent    { background: #ffd9d2; }
+.note.cat-General   { --cat: var(--cat-general); }
+.note.cat-Exam      { --cat: var(--cat-exam); }
+.note.cat-Event     { --cat: var(--cat-event); }
+.note.cat-Placement { --cat: var(--cat-placement); }
+.note.cat-Club      { --cat: var(--cat-club); }
+.note.cat-Holiday   { --cat: var(--cat-holiday); }
+.note.cat-Urgent    { --cat: var(--cat-urgent); }
 
-/* A notice that is only an image: no paper, just the image and a pin */
+/* A notice that is only an image: no card, just the image and a pin */
 .note.image-only {
   padding: 0;
   background: none;
+  border-top: none;
   box-shadow: none;
 }
 
 .pin {
   position: absolute;
-  top: -8px;
+  top: -9px;
   left: 50%;
   width: 18px;
   height: 18px;
   margin-left: -9px;
   background:
-    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.6), transparent 40%),
+    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.55), transparent 40%),
     var(--pin-colour, #d62d2d);
   border-radius: 50%;
-  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
 }
 
 .flyer {
   display: block;
   width: 100%;
   max-height: 420px;
-  margin-bottom: 9px;
+  margin-bottom: 10px;
   object-fit: cover;
-  background: #eee;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.45);
+  background: var(--surface-raised);
+  border-radius: 2px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.55);
   cursor: zoom-in;
 }
 
@@ -226,27 +292,29 @@ textarea {
 .note-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
   font-size: 0.72rem;
-  color: #6f6455;
+  color: var(--text-muted);
 }
 
 .tag {
   padding: 0 8px;
-  color: #2a2118;
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  color: var(--cat);
+  border: 1px solid var(--cat);
   border-radius: 999px;
 }
 
 .note h3 {
-  margin: 2px 0 3px;
+  margin: 2px 0 4px;
   font: 700 1.05rem Georgia, serif;
 }
 
 .note p {
   margin: 0 0 8px;
   font-size: 0.92rem;
+  color: #cfd8d1;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
@@ -255,24 +323,24 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  padding-top: 7px;
-  border-top: 1px dashed rgba(0, 0, 0, 0.25);
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
 }
 
 /* ---------- Pop-ups ---------- */
 dialog {
   width: min(92vw, 520px);
   max-height: 92vh;
-  padding: 18px;
+  padding: 20px;
   overflow: auto;
-  color: #2a2118;
-  background: #fffdf6;
-  border: none;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 14px;
 }
 
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.75);
 }
 
 dialog h2 {
@@ -282,9 +350,9 @@ dialog h2 {
 
 dialog label {
   display: block;
-  margin: 10px 0 4px;
+  margin: 12px 0 4px;
   font-size: 0.82rem;
-  color: #6f6455;
+  color: var(--text-muted);
 }
 
 #image-preview {
@@ -292,11 +360,12 @@ dialog label {
   max-width: 100%;
   max-height: 200px;
   margin: 8px 0 6px;
+  border-radius: 4px;
 }
 
 .form-error {
-  margin: 10px 0 0;
-  color: #b42318;
+  margin: 12px 0 0;
+  color: var(--danger);
   font-size: 0.88rem;
 }
 
@@ -304,25 +373,28 @@ dialog label {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
-  margin-top: 16px;
+  margin-top: 18px;
 }
 
+/* Full-size flyer view */
 #zoom-dialog {
   width: auto;
   max-width: 96vw;
   padding: 0;
   background: transparent;
+  border: none;
 }
 
 #zoom-dialog img {
   display: block;
   max-width: 94vw;
   max-height: 80vh;
+  border-radius: 4px;
 }
 
 .zoom-buttons {
   display: flex;
   justify-content: center;
   gap: 6px;
-  margin-top: 8px;
+  margin-top: 10px;
 }
